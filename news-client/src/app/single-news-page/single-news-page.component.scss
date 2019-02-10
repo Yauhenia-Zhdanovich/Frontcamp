@@ -1,0 +1,46 @@
+.nw-single {
+  width: 60%;
+  margin:  auto;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    
+    img {
+      align-self: center;
+      border-radius: 4px;
+    }
+
+    &_btn-group {
+      align-self: center;
+
+      button {
+        margin: 15px;
+        min-width: 70px;
+      }
+    }
+
+    &_content {
+      padding: 30px;
+
+      h4 {
+        font-size: 1.8rem;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+
+      div {
+        padding: 15px;
+      }
+
+      time {
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.wrapper {
+  min-height: calc(100vh - 60px);
+}

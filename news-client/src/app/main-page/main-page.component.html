@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <nw-header [sourceName]="currentPageHeading"></nw-header>
+  <nw-toolbox (currentChannel)="onLoadNews($event)"
+              (searchValueChanges)="onSearchValueChanges($event)"
+              (filterLocalOnly)="onLocalOnlyFilter($event)">
+            </nw-toolbox>
+  <main class="nw-main">
+    <div *ngIf="!searchValue; else filteredNewsSection">
+        <nw-news-item
+        *ngFor="let article of news"
+        [article]="article" (deletedArticleId)="deleteLocalArticle($event)"></nw-news-item>
+    </div>
+    <ng-template #filteredNewsSection>
+        <nw-news-item
+        *ngFor="let article of filteredNews"
+        [article]="article" (deletedArticleId)="deleteLocalArticle($event)"></nw-news-item>
+    </ng-template>
+    <button class="nw-main__button" mat-stroked-button (click)="onLoadNews()">Load More</button>
+  </main>
+</div>
+
+<nw-footer></nw-footer>

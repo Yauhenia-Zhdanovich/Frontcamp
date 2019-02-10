@@ -1,0 +1,39 @@
+.nw-edit {
+  width: 60%;
+  margin: 0 auto;
+}
+
+mat-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.new-edit__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  padding: 2rem;
+}
+
+.new-edit__input-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.nw-edit__image-section {
+  padding: 1rem .5rem;
+}
+
+mat-radio-button {
+  padding: 0 .5rem;
+}
+
+.nw-edit__control-group {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1.5rem;
+}
+
+.wrapper {
+  min-height: calc(100vh - 60px);
+}

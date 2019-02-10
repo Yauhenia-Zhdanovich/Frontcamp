@@ -1,10 +1,7 @@
 const routes = require('express').Router();
 const mongoose = require('mongoose');
 const logger = require('../logger/logger');
-const bodyParser = require('body-parser')
-const News = require('../models/news.model');
-
-const jsonParser = bodyParser.json();
+const News = require('../models/news.model')
 
 routes.get('/', (req, res) => {
     res.status(200).send('Welcome to the testies news website!');
@@ -15,7 +12,7 @@ routes.get('/news', (req, res) => {
     News.find()
     .exec()
     .then(docs => {
-        res.status(200).json(docs);
+        res.status(200).json({status: 200, articles: docs});
     })
     .catch(err => {
         console.log(err);
@@ -29,8 +26,13 @@ routes.post('/news', (req, res) => {
     const news = new News({
         _id: new mongoose.Types.ObjectId(),
         title: req.body.title,
-        text: req.body.text,
-        date: Date.now()
+        description: req.body.description,
+        content: req.body.content,
+        urlToImage: req.body.urlToImage,
+        url: req.body.url,
+        author: req.body.author,
+        source: req.body.source,
+        publishedAt: req.body.publishedAt
     });
     news.save()
         .then(result => console.log(result))
@@ -60,7 +62,15 @@ routes.get('/news/:id', (req, res) => {
 routes.patch('/news/:id', (req, res) => {
     const id = req.params.id;
     console.log(req.body)
-    News.update({_id: id}, {$set: {title: req.body.title, text: req.body.text}})
+    News.update({_id: id}, {$set: {
+        title: req.body.title,
+        description: req.body.description,
+        content: req.body.content,
+        urlToImage: req.body.urlToImage,
+        url: req.body.url,
+        author: req.body.author,
+        publishedAt: req.body.publishedAt
+    }})
         .exec()
         .then(result => {
             res.status(200).json(result)

@@ -1,0 +1,13 @@
+<header class="nw-header">
+  <img src="../../../assets/img/download (1).png" alt="" [routerLink]="'/news'">
+  <div class="nw-header__source-name" *ngIf="sourceName;else defaultName">
+      {{ sourceName }}
+    </div>
+    <ng-template #defaultName>
+      <div class="nw-header__source-name">Tasty News</div>
+    </ng-template>
+  <div class="nw-header__button-container">
+    <button mat-stroked-button>User Log In</button>
+    <button mat-stroked-button>User Log Out</button>
+  </div> 
+</header>

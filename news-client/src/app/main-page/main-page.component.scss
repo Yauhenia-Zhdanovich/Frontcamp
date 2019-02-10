@@ -1,0 +1,16 @@
+.nw-main {
+  width: 60%;
+  margin: 0 auto;
+
+  &__button {
+    display: block;
+    margin: 20px auto;
+    min-width: 180px;
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+}
+
+.wrapper {
+  min-height: calc(100vh - 60px);
+}

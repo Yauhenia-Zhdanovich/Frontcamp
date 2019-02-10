@@ -1,0 +1,24 @@
+<div class="nw-toolbox">
+  <div class="nw-toolbox__select-container">
+    <ng-select [items]="newsChannels"
+                [disabled]="isLocalOnly"
+                #ngSelect
+                [searchable]="false"
+                bindLabel="name"
+                bindValue="id"
+                [(ngModel)]="selectedSource"
+                placeholder="Select source"
+                (keydown.enter)="1"
+                (change)="onChannelChange($event)">
+    </ng-select>
+  </div>
+  <div class="nw-toolbox__filter-container">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Type your text" [formControl]="searchValue">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-checkbox [(ngModel)]="isLocalOnly" (change)="onLocalFilter($event)">Only created by me</mat-checkbox>
+  </div>
+  <a [routerLink]="'/news/create'" mat-stroked-button>Add article</a>
+</div>

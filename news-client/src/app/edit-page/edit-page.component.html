@@ -1,0 +1,65 @@
+<div class="wrapper">
+    <nw-header></nw-header>
+    <section class="nw-edit">
+      <form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <div class="new-edit__wrapper">
+          <mat-form-field>
+            <label>
+              Heading
+            </label>
+            <input #inputTitle matInput formControlName="title" type="text">
+          </mat-form-field>
+          <mat-form-field>
+            <label for="">
+              Short Description
+            </label>
+            <input matInput formControlName="description" type="text">
+          </mat-form-field>
+          <mat-form-field>
+            <label for="">
+              Content
+            </label>
+            <textarea rows="13" matInput formControlName="content"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="new-edit__wrapper">
+          <mat-form-field formGroupName="imageGroup">
+            <div class="nw-edit__image-section">
+              <mat-radio-group formControlName="typesOffiles">
+                <mat-radio-button *ngFor="let type of typesOffiles" [value]="type">{{type}}</mat-radio-button>
+              </mat-radio-group >
+            </div>
+            <label for="">
+              Image
+            </label>
+            <input matInput formControlName="image" type="text">
+          </mat-form-field>
+          <mat-form-field>
+            <label for="">
+              Date
+            </label>
+            <input matInput formControlName="publishedAt" type="date">
+          </mat-form-field>
+          <mat-form-field>
+            <label for="">
+              Author
+            </label>
+            <input matInput formControlName="author" type="text">
+          </mat-form-field>
+          <mat-form-field>
+            <label for="">
+              Source URL
+            </label>
+            <input matInput formControlName="url" type="text">
+          </mat-form-field>
+          <div class="nw-edit__control-group">
+              <button mat-stroked-button color="primary">Save</button>
+              <a mat-stroked-button color="warn" [routerLink]="'/news'">Cancel</a>
+            </div>
+        </div>
+      </mat-card>    
+    </form>
+  </section>
+</div>
+<nw-footer></nw-footer>

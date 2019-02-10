@@ -1,0 +1,28 @@
+<mat-card>
+  <section class="news-item">
+    <img [src]="article.urlToImage" onError="this.src='../../../assets/img/download.png'" alt="" class="news-item__image">
+    <div>
+      <h4>{{ article.title }}</h4>
+      <div>
+        <div class="news-item__description">{{ article.description }}</div>
+        <ng-container *ngIf="isContentOpen">
+          <div class="news-item__description">{{article.content}}</div>
+          <a [href]="article.url" target="_blank" class="news-item__link-to-source">Go to the source...</a>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="this.article.source === 'local';else worldWideNews">
+        <a [routerLink]="[article._id]" class="news-item__link-to-source">Read more...</a>
+      </ng-container>
+      <ng-template #worldWideNews>
+        <button *ngIf="!isContentOpen"
+          (click)="isContentOpen = !isContentOpen"
+          class="news-item__link-to-source">Read more...</button>
+      </ng-template>
+    </div>
+    <time class="news-item__date">{{ article.publishedAt | date }}</time>
+    <div class="news-item__button-group" *ngIf="article.source === 'local'">
+      <button mat-stroked-button [routerLink]="['edit', article._id]">Edit</button>
+      <button mat-stroked-button (click)="onArticleDeleted()">Delete</button>
+    </div>
+  </section>
+</mat-card>

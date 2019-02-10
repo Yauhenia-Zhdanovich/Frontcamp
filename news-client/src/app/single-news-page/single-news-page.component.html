@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <nw-header></nw-header>
+  <section *ngIf="isArticleLoaded" class="nw-single">
+    <mat-card>
+      <div class="nw-single__wrapper">
+        <img [src]="article.urlToImage"
+        onError="this.src='../../assets/img/download.png'"alt="">
+        <div class="nw-single__wrapper_content">
+          <h4>{{article.title}}</h4>
+          <div>{{article.description}}</div>
+          <div>{{article.content}}</div>
+          <time>{{article.publishedAt | date}}</time>
+          <div>{{article.source}}</div>
+        </div>
+        <div class="nw-single__wrapper_btn-group">
+          <button mat-stroked-button [routerLink]="['/news', 'edit', article._id]">Edit</button>
+          <button mat-stroked-button (click)="deleteArticle(article._id)">Delete</button>
+        </div>
+      </div>
+    </mat-card>
+  </section>
+</div>
+
+<nw-footer></nw-footer>
