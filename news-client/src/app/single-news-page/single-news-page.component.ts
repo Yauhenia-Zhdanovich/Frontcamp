@@ -28,7 +28,6 @@ export class SingleNewsPageComponent implements OnInit {
   }
 
   public deleteArticle(articleId: string) {
-    console.log(articleId);
     this.newsService.deleteLocalNewsArticle(articleId)
       .subscribe(() => {
         this.router.navigate(['news']);

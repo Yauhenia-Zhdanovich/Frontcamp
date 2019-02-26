@@ -15,7 +15,7 @@ import { switchMap } from 'rxjs/operators';
 export class MainPageComponent implements OnInit {
   public news;
   public filteredNews = [];
-  public currentPageHeading = 1;
+  public currentPageHeading: string;
   public currentChannelId: string;
   public pageCount: number;
   public searchValue: string;
@@ -89,7 +89,6 @@ export class MainPageComponent implements OnInit {
   }
 
   public deleteLocalArticle(articleId: string) {
-    console.log(articleId);
     this.newsService.deleteLocalNewsArticle(articleId)
       .subscribe(() => {
         this.dynamicNewsUpload.next({page: this.pageCount, source: this.currentChannelId});

@@ -14,7 +14,7 @@
         </div>
         <div class="nw-single__wrapper_btn-group">
           <button mat-stroked-button [routerLink]="['/news', 'edit', article._id]">Edit</button>
-          <button mat-stroked-button (click)="deleteArticle(article._id)">Delete</button>
+          <button mat-stroked-button class="nw-single__wrapper_btn-group_delete" (click)="deleteArticle(article._id)">Delete</button>
         </div>
       </div>
     </mat-card>
